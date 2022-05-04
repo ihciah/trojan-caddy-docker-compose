@@ -1,0 +1,18 @@
+{
+	admin off
+}
+
+https://your.domain:443 {
+	tls {
+		dns cloudflare your_cf_token
+	}
+	respond "Access denied" 403 {
+		close
+	}
+}
+
+http://your.domain:80 {
+	respond "Access denied" 403 {
+		close
+	}
+}

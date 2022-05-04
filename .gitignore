@@ -1,0 +1,6 @@
+/trojan/config.json
+/caddy/Caddyfile
+/data/certificates
+/data/acme
+/data/locks
+/data/ocsp

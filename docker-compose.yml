@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  trojan:
+      image: ihciah/trojan
+      ports:
+        - "443:443"
+      volumes:
+        - type: bind
+          source: ./trojan/config.json
+          target: /config.json
+          read_only: true
+        - ./data:/data:ro
+      links:
+        - caddy:__DOCKER_CADDY__
+      depends_on: 
+        - caddy
+
+  caddy:
+      image: ihciah/caddy
+      volumes:
+        - type: bind
+          source: ./caddy/Caddyfile
+          target: /etc/caddy/Caddyfile
+          read_only: true
+        - ./data:/data/caddy
